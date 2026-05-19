@@ -1,36 +1,21 @@
 import type { Metadata } from "next";
-import { Open_Sans, Libre_Baskerville } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-open-sans",
-});
-
-const libreBaskerville = Libre_Baskerville({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-libre",
-});
+const sans = Open_Sans({ subsets: ["latin"], weight: ["400","500","600","700"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Bereket Çiçekçilik & Organizasyon | Çorum",
-  description:
-    "Çorum'da 20 yılı aşkın tecrübeyle çiçekçilik, mekan süsleme ve organizasyon hizmetleri. Toptan ve perakende çiçek satışı.",
-  keywords: "çiçekçi, Çorum, organizasyon, mekan süsleme, toptan çiçek, buket",
+  description: "Çorum'da 20+ yıldır taze çiçek, mekan süsleme ve organizasyon hizmetleri. Toptan & perakende satış.",
+  keywords: "çiçekçi Çorum, organizasyon, mekan süsleme, buket, gelin buketi, toptan çiçek",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${openSans.variable} ${libreBaskerville.variable}`}>
-      <body className="bg-white text-[#404A3D]">
+    <html lang="tr" className={sans.variable}>
+      <body style={{ fontFamily: "var(--font-sans, 'Segoe UI', system-ui, sans-serif)" }}>
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -1,110 +1,58 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Hizmetlerimiz | Bereket Çiçekçilik",
-  description: "Mekan süsleme, toptan çiçekçilik, organizasyon malzemeleri ve yapay ağaç tasarımı hizmetleri.",
+  description: "Mekan süsleme, toptan çiçekçilik, organizasyon ve yapay bitki hizmetleri.",
 };
 
 const services = [
-  {
-    img: "/service-1.jpg",
-    icon: "🌸",
-    title: "Mekan Süsleme ve Organizasyon",
-    desc: "Kafe, restaurant, apartman ve düğün salonlarını profesyonel çiçek aranjmanları ve dekorasyon ürünleriyle canlandırıyoruz. Mekanınızı hayalinizdeki atmosfere kavuşturuyoruz.",
-    features: ["Düğün & Nişan Süsleme", "Restoran & Kafe Dekorasyonu", "Kurumsal Mekan Tasarımı", "Özel Günler"],
-  },
-  {
-    img: "/service-2.jpg",
-    icon: "💐",
-    title: "Toptan ve Perakende Çiçekçilik",
-    desc: "Her gün taze temin edilen çiçeklerimizle özel tasarım buketler ve aranjmanlar hazırlıyoruz. Hem bireysel hem kurumsal ihtiyaçlara özel fiyatlarla hizmet veriyoruz.",
-    features: ["Taze Buket Tasarımı", "Özel Aranjmanlar", "Toptan Sipariş", "Hızlı Teslimat"],
-  },
-  {
-    img: "/service-3.jpg",
-    icon: "🎀",
-    title: "Organizasyon Malzemeleri",
-    desc: "3 katlı mağazamızda her türlü organizasyon malzemesini bulabilirsiniz. Şeritler, balonlar, süslemeler ve daha fazlası tek adreste.",
-    features: ["Balon & Dekorasyon", "Şerit & Kurdele", "Hediye Paketleme", "Tematik Süslemeler"],
-  },
-  {
-    img: "/service-5.jpg",
-    icon: "🌳",
-    title: "Yapay Ağaç Tasarımı",
-    desc: "Gerçeğe en yakın doku ve detaylarla hazırlanan yapay ağaçlarımız mekanlarınıza doğallığın estetik halini kazandırır. Bakımsız, uzun ömürlü çözümler.",
-    features: ["İç Mekan Ağaçları", "Dış Mekan Tasarımı", "Özel Boyut & Şekil", "Bakım Gerektirmez"],
-  },
-  {
-    img: "/service-5.jpg",
-    icon: "🌿",
-    title: "Yapay Çiçek & Bitkiler",
-    desc: "Solmayan güzellik için yapay çiçek ve bitkilerle mekanlarınızı yıl boyu canlı tutun. Her tarz ve bütçeye uygun geniş ürün seçeneği.",
-    features: ["Yapay Buketler", "Yapay Saksı Bitkileri", "Duvar Panelleri", "Çelenk Tasarımı"],
-  },
-  {
-    img: "/service-6.jpg",
-    icon: "🏢",
-    title: "Kurumsal Hizmetler",
-    desc: "Düzenli mekan süsleme, toplu sipariş ve kurumsal sözleşme seçenekleriyle işletmenizin çiçek ihtiyacını sürekli karşılıyoruz.",
-    features: ["Haftalık Yenileme", "Toplu Sipariş", "Sözleşmeli Hizmet", "Fatura Desteği"],
-  },
+  { img:"/service-1.jpg", icon:"🌸", title:"Mekan Süsleme", desc:"Kafe, restaurant, apartman ve düğün salonlarını profesyonel çiçek aranjmanları ile canlandırıyoruz.", features:["Düğün & Nişan","Restoran & Kafe","Kurumsal Mekan","Özel Günler"] },
+  { img:"/service-2.jpg", icon:"💐", title:"Taze Çiçekçilik", desc:"Her gün taze temin edilen çiçeklerimizle özel tasarım buketler ve aranjmanlar hazırlıyoruz.", features:["Taze Buket","Özel Aranjman","Toptan Sipariş","Hızlı Teslimat"] },
+  { img:"/service-3.jpg", icon:"🎀", title:"Organizasyon Malzemeleri", desc:"3 katlı mağazamızda organizasyonlarınız için A'dan Z'ye her türlü malzemeyi bulabilirsiniz.", features:["Balon & Dekorasyon","Şerit & Kurdele","Hediye Paketi","Tematik Süsleme"] },
+  { img:"/service-5.jpg", icon:"🌳", title:"Yapay Bitki Tasarımı", desc:"Bakım gerektirmeyen yapay ağaç ve bitkilerle mekanlarınıza doğallık katıyoruz.", features:["İç Mekan Ağacı","Dış Mekan","Özel Boyut","Uzun Ömürlü"] },
+  { img:"/service-4.jpg", icon:"💒", title:"Düğün Organizasyonu", desc:"Hayallerinizdeki düğün için gelin buketi, salon süsleme ve tüm çiçek ihtiyaçlarınız.", features:["Gelin Buketi","Salon Süsleme","Masa Aranjmanı","Kır Düğünü"] },
+  { img:"/service-6.jpg", icon:"🏢", title:"Kurumsal Hizmetler", desc:"Düzenli mekan süsleme ve toplu sipariş seçenekleriyle kurumsal ihtiyaçlarınızı karşılıyoruz.", features:["Haftalık Yenileme","Toplu Sipariş","Sözleşmeli","Faturalı Hizmet"] },
 ];
 
 export default function ServicePage() {
   return (
     <>
-      {/* Page Hero */}
-      <div className="relative h-72 sm:h-96 overflow-hidden">
+      <div className="relative h-64 sm:h-96 overflow-hidden">
         <Image src="/service-1.jpg" alt="Hizmetlerimiz" fill className="object-cover" />
-        <div className="absolute inset-0 bg-[#404A3D]/70" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-16">
-          <span className="text-[#EDDD5E] text-sm font-semibold tracking-widest uppercase mb-3">Ne Yapıyoruz?</span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white text-center">Hizmetlerimiz</h1>
-          <div className="flex gap-2 mt-4 text-sm text-gray-300">
-            <Link href="/" className="hover:text-[#EDDD5E] transition-colors">Anasayfa</Link>
-            <span>/</span>
-            <span className="text-[#EDDD5E]">Hizmetlerimiz</span>
-          </div>
+        <div className="absolute inset-0 bg-[#1a1f18]/70" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center pt-16 text-center px-4">
+          <div className="badge mb-4" style={{color:"#EDDD5E",background:"rgba(237,221,94,0.1)",borderColor:"rgba(237,221,94,0.25)"}}>Ne Yapıyoruz?</div>
+          <h1 className="text-3xl sm:text-5xl font-bold text-white">Hizmetlerimiz</h1>
+          <p className="text-[#EDDD5E] text-xs mt-3"><Link href="/" className="hover:underline">Anasayfa</Link> / Hizmetlerimiz</p>
         </div>
       </div>
 
-      {/* Services grid */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="section-title">Hizmetlerimiz</span>
-            <h2 className="text-4xl font-bold text-[#404A3D] mt-4">Sunduğumuz Profesyonel Çözümler</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-              Her ihtiyacınıza özel çözümler üretiyoruz. Küçük bir buket siparişinden kurumsal mekan tasarımına kadar yanınızdayız.
-            </p>
+      <section className="section-pad bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <div className="badge mb-4 mx-auto">Hizmetlerimiz</div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1f18]">Sunduğumuz Çözümler</h2>
+            <p className="text-gray-400 mt-3 max-w-xl mx-auto text-sm">Küçük bir buket siparişinden kurumsal mekan tasarımına kadar yanınızdayız.</p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((s) => (
-              <div key={s.title} className="group rounded-2xl overflow-hidden shadow-md card-hover bg-white border border-gray-100">
-                <div className="relative h-52 overflow-hidden">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map(s => (
+              <div key={s.title} className="group bg-[#faf9f7] rounded-2xl overflow-hidden hover-lift">
+                <div className="relative h-48 overflow-hidden">
                   <Image src={s.img} alt={s.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <span className="absolute bottom-4 left-4 text-3xl">{s.icon}</span>
+                  <span className="absolute bottom-3 left-4 text-2xl">{s.icon}</span>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-[#404A3D] text-lg mb-3">{s.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-4">{s.desc}</p>
-                  <ul className="space-y-2">
-                    {s.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-gray-600">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#5B8C51] flex-shrink-0" />
-                        {f}
-                      </li>
+                <div className="p-5">
+                  <h3 className="font-bold text-[#1a1f18] mb-2">{s.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-4">{s.desc}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {s.features.map(f => (
+                      <span key={f} className="px-2 py-0.5 bg-[#5B8C51]/10 text-[#5B8C51] text-[11px] font-medium rounded-full">{f}</span>
                     ))}
-                  </ul>
-                  <Link
-                    href="/iletisim"
-                    className="inline-flex items-center mt-5 text-sm font-semibold text-[#5B8C51] hover:underline"
-                  >
-                    Teklif Al →
-                  </Link>
+                  </div>
+                  <Link href="/iletisim" className="text-xs font-bold text-[#5B8C51] hover:underline">Teklif Al →</Link>
                 </div>
               </div>
             ))}
@@ -113,39 +61,34 @@ export default function ServicePage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-[#f7faf6]">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <span className="section-title">Nasıl Çalışırız?</span>
-            <h2 className="text-4xl font-bold text-[#404A3D] mt-4">Hizmet Sürecimiz</h2>
+      <section className="section-pad bg-[#faf9f7]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <div className="badge mb-4 mx-auto">Süreç</div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1f18]">Nasıl Çalışırız?</h2>
           </div>
-          <div className="grid sm:grid-cols-4 gap-6 relative">
-            <div className="hidden sm:block absolute top-12 left-[15%] right-[15%] h-0.5 bg-[#5B8C51]/20" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
-              { step: "01", icon: "📞", title: "İletişim", text: "Bizi arayın veya form doldurun" },
-              { step: "02", icon: "💬", title: "Danışmanlık", text: "İhtiyaçlarınızı birlikte belirleyelim" },
-              { step: "03", icon: "🎨", title: "Tasarım", text: "Size özel tasarım hazırlıyoruz" },
-              { step: "04", icon: "✅", title: "Teslimat", text: "Zamanında, özenli teslimat" },
-            ].map((p) => (
-              <div key={p.step} className="text-center relative">
-                <div className="w-24 h-24 rounded-full bg-white shadow-md mx-auto mb-4 flex items-center justify-center border-2 border-[#5B8C51]/20">
-                  <span className="text-3xl">{p.icon}</span>
-                </div>
-                <span className="text-xs font-bold text-[#5B8C51] tracking-widest">{p.step}</span>
-                <h4 className="font-bold text-[#404A3D] mt-1">{p.title}</h4>
-                <p className="text-xs text-gray-500 mt-1">{p.text}</p>
+              {n:"01",icon:"📞",title:"İletişim",text:"Bizi arayın"},
+              {n:"02",icon:"💬",title:"Danışmanlık",text:"İhtiyaçlarınızı belirleyelim"},
+              {n:"03",icon:"🎨",title:"Tasarım",text:"Size özel hazırlıyoruz"},
+              {n:"04",icon:"✅",title:"Teslimat",text:"Zamanında, özenle"},
+            ].map(p => (
+              <div key={p.n} className="text-center">
+                <div className="w-16 h-16 rounded-2xl bg-white shadow-sm mx-auto mb-3 flex items-center justify-center text-2xl">{p.icon}</div>
+                <span className="text-[10px] font-bold text-[#5B8C51] tracking-widest">{p.n}</span>
+                <h4 className="font-bold text-[#1a1f18] text-sm mt-1">{p.title}</h4>
+                <p className="text-xs text-gray-400 mt-1">{p.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 bg-[#5B8C51]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Projeniz İçin Ücretsiz Teklif Alın</h2>
-          <p className="text-green-100 mb-8">Hizmetlerimiz hakkında daha fazla bilgi için bize ulaşın.</p>
-          <Link href="/iletisim" className="inline-flex px-10 py-4 bg-[#EDDD5E] text-[#404A3D] font-bold rounded-full hover:bg-yellow-400 transition-all shadow-xl">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Ücretsiz Teklif Alın</h2>
+          <Link href="/iletisim" className="inline-flex px-9 py-4 bg-[#EDDD5E] text-[#1a1f18] font-bold rounded-full hover:bg-yellow-400 transition shadow-xl text-sm">
             İletişime Geç →
           </Link>
         </div>

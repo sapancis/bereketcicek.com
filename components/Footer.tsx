@@ -1,119 +1,66 @@
 "use client";
-
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#404A3D] text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-
-        {/* Brand */}
+    <footer className="bg-[#1a1f18] text-gray-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="sm:col-span-2 lg:col-span-1">
-          <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-10 h-10 rounded-full bg-[#5B8C51] flex items-center justify-center shrink-0">
-              <span className="text-[#EDDD5E] text-xl font-bold">B</span>
-            </div>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-10 h-10 rounded-full bg-[#5B8C51] flex items-center justify-center text-[#EDDD5E] font-bold text-lg">B</span>
             <div>
-              <p className="text-white font-bold text-lg leading-tight">Bereket</p>
-              <p className="text-gray-400 text-[10px] tracking-widest uppercase">Çiçekçilik</p>
+              <p className="text-white font-bold text-base leading-tight">Bereket Çiçekçilik</p>
+              <p className="text-[10px] tracking-widest uppercase text-gray-500">& Organizasyon</p>
             </div>
           </div>
-          <p className="text-sm leading-relaxed text-gray-400 mb-5">
-            Çorum&apos;un kalbinde, 20 yılı aşkın süredir çiçekçilik ve organizasyon sektörüne yön veriyoruz.
-          </p>
+          <p className="text-sm leading-relaxed text-gray-500 mb-5">Çorum'un kalbinde 20+ yıldır çiçek ve organizasyon hizmetleri.</p>
           <div className="flex gap-3">
-            {["facebook", "instagram", "whatsapp"].map((s) => (
-              <a key={s} href="#" aria-label={s}
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#5B8C51] transition-colors">
-                <SocialIcon name={s} />
-              </a>
+            {["f","in","wp"].map(s => (
+              <a key={s} href="#" className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#5B8C51] flex items-center justify-center transition-colors text-xs text-white">{s}</a>
             ))}
           </div>
         </div>
 
-        {/* Quick links */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-xs uppercase tracking-widest">Hızlı Menü</h3>
-          <ul className="space-y-2.5 text-sm">
-            {[
-              { href: "/", label: "Anasayfa" },
-              { href: "/hakkimizda", label: "Hakkımızda" },
-              { href: "/hizmetlerimiz", label: "Hizmetlerimiz" },
-              { href: "/urunlerimiz", label: "Ürünlerimiz" },
-              { href: "/iletisim", label: "İletişim" },
-            ].map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="hover:text-[#EDDD5E] transition-colors flex items-center gap-2">
-                  <span className="text-[#5B8C51]">›</span> {l.label}
-                </Link>
-              </li>
-            ))}
+          <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">Sayfalar</h4>
+          <ul className="space-y-2 text-sm">
+            {["/","hakkimizda","hizmetlerimiz","urunlerimiz","iletisim"].map(p => {
+              const label = p === "/" ? "Anasayfa" : p.charAt(0).toUpperCase()+p.slice(1).replace("hakkimizda","Hakkımızda").replace("hizmetlerimiz","Hizmetlerimiz").replace("urunlerimiz","Ürünlerimiz").replace("iletisim","İletişim");
+              return (
+                <li key={p}><Link href={p==="/"?"/":"/"+p} className="hover:text-[#EDDD5E] transition-colors flex items-center gap-2"><span className="text-[#5B8C51] text-xs">›</span>{label}</Link></li>
+              );
+            })}
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-xs uppercase tracking-widest">İletişim</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex gap-2.5">
-              <span className="text-[#5B8C51] shrink-0 mt-0.5">📍</span>
-              <span className="text-gray-400 text-xs leading-relaxed">Üçtutlar, Üçtutlar Cd. No:38, 19030 Çorum Merkez/Çorum</span>
-            </li>
-            <li className="flex gap-2.5">
-              <span className="text-[#5B8C51] shrink-0">📞</span>
-              <a href="tel:+905366463306" className="hover:text-[#EDDD5E] transition-colors text-xs">+90 536 646 33 06</a>
-            </li>
-            <li className="flex gap-2.5">
-              <span className="text-[#5B8C51] shrink-0">✉️</span>
-              <a href="mailto:bilgi@bereketcicek.com" className="hover:text-[#EDDD5E] transition-colors text-xs break-all">bilgi@bereketcicek.com</a>
-            </li>
+          <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">İletişim</h4>
+          <ul className="space-y-3 text-xs">
+            <li className="flex gap-2"><span className="text-[#5B8C51] shrink-0 mt-0.5">📍</span><span className="leading-relaxed">Üçtutlar Cd. No:38, Çorum Merkez</span></li>
+            <li className="flex gap-2"><span className="text-[#5B8C51]">📞</span><a href="tel:+905366463306" className="hover:text-[#EDDD5E] transition-colors">0536 646 33 06</a></li>
+            <li className="flex gap-2"><span className="text-[#5B8C51]">✉</span><a href="mailto:bilgi@bereketcicek.com" className="hover:text-[#EDDD5E] transition-colors break-all">bilgi@bereketcicek.com</a></li>
           </ul>
         </div>
 
-        {/* Hours + newsletter */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-xs uppercase tracking-widest">Çalışma Saatleri</h3>
-          <div className="text-sm space-y-2 mb-6">
-            <div className="flex justify-between text-xs">
-              <span className="text-gray-400">Pzt – Cmt</span>
-              <span className="text-[#EDDD5E] font-semibold">09:00 – 19:30</span>
-            </div>
-            <div className="flex justify-between text-xs">
-              <span className="text-gray-400">Pazar</span>
-              <span className="text-red-400 font-semibold">Kapalı</span>
-            </div>
+          <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-4">Çalışma Saatleri</h4>
+          <div className="space-y-2 text-xs mb-6">
+            <div className="flex justify-between"><span>Pzt – Cmt</span><span className="text-[#EDDD5E] font-semibold">09:00 – 19:30</span></div>
+            <div className="flex justify-between"><span>Pazar</span><span className="text-red-400">Kapalı</span></div>
           </div>
-          <h3 className="text-white font-semibold mb-3 text-xs uppercase tracking-widest">E-Bülten</h3>
-          <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="E-posta adresiniz"
-              className="flex-1 min-w-0 bg-white/10 text-xs rounded-full px-3 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#5B8C51]"
-            />
-            <button type="submit" className="px-4 py-2.5 bg-[#5B8C51] text-white text-xs font-semibold rounded-full hover:bg-[#4a7342] transition-colors whitespace-nowrap shrink-0">
-              Kayıt
-            </button>
+          <h4 className="text-white text-xs font-semibold uppercase tracking-widest mb-3">E-Bülten</h4>
+          <form className="flex gap-2" onSubmit={e => e.preventDefault()}>
+            <input type="email" placeholder="E-posta" className="flex-1 min-w-0 bg-white/5 text-xs rounded-full px-3 py-2 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-[#5B8C51]" />
+            <button className="px-4 py-2 bg-[#5B8C51] text-white text-xs font-semibold rounded-full hover:bg-[#4a7342] transition shrink-0">Kayıt</button>
           </form>
         </div>
       </div>
-
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-500">
-          <span className="text-center sm:text-left">© 2025 Bereket Çiçekçilik & Organizasyon. Tüm hakları saklıdır.</span>
-          <span className="text-center sm:text-right">
-            Tasarım &amp; Kodlama{" "}
-            <a href="https://assyazilim.net" className="text-[#EDDD5E] hover:underline">Ass Yazılım</a>
-          </span>
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-600">
+          <span>© 2025 Bereket Çiçekçilik. Tüm hakları saklıdır.</span>
+          <span>Tasarım <a href="https://assyazilim.net" className="text-[#EDDD5E] hover:underline">Ass Yazılım</a></span>
         </div>
       </div>
     </footer>
   );
-}
-
-function SocialIcon({ name }: { name: string }) {
-  if (name === "facebook")
-    return <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>;
-  if (name === "instagram")
-    return <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" /></svg>;
-  return <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" /><path d="M11.5 2a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 11.5 2zm5.952 14.452A8.5 8.5 0 1 1 20 11.5a8.51 8.51 0 0 1-2.548 5.952z" /></svg>;
 }

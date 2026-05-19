@@ -1,172 +1,187 @@
-import HeroSection from "@/components/HeroSection";
 import Image from "next/image";
 import Link from "next/link";
 
+/* ─── DATA ─────────────────────────────────────────── */
 const services = [
-  { img: "/service-1.jpg", title: "Mekan Süsleme ve Organizasyon", desc: "Kafe, restaurant, apartman gibi mekanlarınızı çiçeklerimizle canlandırıyoruz." },
-  { img: "/service-2.jpg", title: "Toptan ve Perakende Çiçekçilik", desc: "En kaliteli çiçekler, özel tasarım buketler ve aranjmanlarla sevdiklerinizi mutlu edin." },
-  { img: "/service-3.jpg", title: "Organizasyon Malzemeleri", desc: "3 katlı mağazamızda organizasyonlarınız için A'dan Z'ye her türlü malzemeyi bulabilirsiniz." },
-  { img: "/service-5.jpg", title: "Yapay Ağaç Tasarımı", desc: "Gerçeğe en yakın doku ve detaylarla hazırlanan yapay ağaçlarımız mekanınıza doğallık katar." },
+  { img: "/service-1.jpg", icon: "🌸", title: "Mekan Süsleme", desc: "Kafe, restaurant ve düğün salonları için profesyonel çiçek süsleme." },
+  { img: "/service-2.jpg", icon: "💐", title: "Taze Çiçekler", desc: "Her gün taze temin edilen çiçeklerle özel tasarım buketler." },
+  { img: "/service-3.jpg", icon: "🎀", title: "Organizasyon", desc: "Düğün, nişan, doğum günü organizasyonları için A'dan Z'ye hizmet." },
+  { img: "/service-5.jpg", icon: "🌿", title: "Yapay Bitkiler", desc: "Bakım gerektirmeyen yapay ağaç ve bitki tasarımları." },
+];
+
+const stats = [
+  { n: "20+", l: "Yıllık Deneyim" },
+  { n: "75+", l: "Dizayn İşletme" },
+  { n: "3000+", l: "Ürün Çeşidi" },
+  { n: "7500+", l: "Mutlu Müşteri" },
 ];
 
 const testimonials = [
-  { img: "/testimonial-1.jpg", quote: "Ahmet Abi, nişanımız için tam hayalimizdeki gibi bir buket hazırladı. Herkese tavsiye ederiz!", name: "Elif & Murat A.", role: "Nişan Organizasyonu" },
-  { img: "/testimonial-2.jpg", quote: "Son dakika uğradım, beni hiç geri çevirmedi. Hem çok şık bir süsleme yaptı hem de uygun fiyat.", name: "Sevda K.", role: "İşletme Sahibi" },
-  { img: "/testimonial-3.jpg", quote: "Özel günler için ne zaman çiçek alacak olsam ilk durağım Ahmet Abi'nin dükkanı.", name: "Kenan T.", role: "Öğretmen" },
+  { initial: "E", name: "Elif & Murat A.", role: "Nişan Organizasyonu", color: "#e8a0bf", text: "Nişanımız için tam hayalimizdeki buketi hazırladılar. Çiçeklerin tazeliği ve uyumu harikaydı, herkese tavsiye ederiz!" },
+  { initial: "S", name: "Sevda K.", role: "İşletme Sahibi", color: "#5B8C51", text: "Son dakika uğradım, beni hiç geri çevirmedi. Çok şık bir süsleme yaptı ve fiyatlar çok uygundu." },
+  { initial: "K", name: "Kenan T.", role: "Öğretmen", color: "#EDDD5E", text: "Özel günler için ne zaman çiçek alacak olsam ilk durağım burası. Her seferinde birbirinden güzel aranjmanlar." },
 ];
 
+/* ─── PAGE ──────────────────────────────────────────── */
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <Image src="/hero.jpg" alt="Çiçek" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 
-      {/* About */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Görsel grid */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 relative">
-              <div className="col-span-2 relative rounded-2xl overflow-hidden h-56 sm:h-72 lg:h-80">
-                <Image src="/service-1.jpg" alt="Mekan süsleme" fill className="object-cover" />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden h-36 sm:h-44">
-                <Image src="/service-2.jpg" alt="Çiçek aranjman" fill className="object-cover" />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden h-36 sm:h-44">
-                <Image src="/service-3.jpg" alt="Organizasyon" fill className="object-cover" />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-[#5B8C51] flex flex-col items-center justify-center shadow-xl z-10">
-                <span className="text-2xl sm:text-3xl font-bold text-white">20+</span>
-                <span className="text-[9px] sm:text-xs text-[#EDDD5E] text-center leading-tight px-1">Yıllık Deneyim</span>
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-20 w-full">
+          <div className="max-w-2xl">
+            <div className="badge text-[#EDDD5E] bg-transparent border border-[#EDDD5E]/30 mb-6 animate-fade-up" style={{color:"#EDDD5E"}}>
+              Çorum&apos;un Çiçekçisi — 1995&apos;ten beri
             </div>
-
-            {/* Metin */}
-            <div className="pt-6 lg:pt-0">
-              <span className="section-title">Hakkımızda</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#404A3D] mt-4 mb-5 leading-tight">
-                Çorum&apos;da 20 Yılı Aşkın Tecrübe ile Çiçekçilik
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-7 text-sm sm:text-base">
-                Çorum&apos;un kalbinde, 20 yılı aşkın süredir çiçekçilik ve organizasyon sektörüne yön veriyoruz. 3 katlı mağazamızda en taze çiçekleri, en şık organizasyon malzemelerini sizlerle buluştururken toptan ve perakende seçeneklerimizle her ihtiyaca cevap veriyoruz.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-7">
-                {[
-                  { icon: "🌸", title: "Mekan Süsleme", text: "Restaurant, kafe ve düğün salonları için profesyonel hizmet." },
-                  { icon: "🛍️", title: "Toptan & Perakende", text: "Zengin ürün çeşitliliği ve uygun fiyatlarla." },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-3">
-                    <span className="text-2xl shrink-0">{item.icon}</span>
-                    <div>
-                      <h4 className="font-semibold text-[#404A3D] mb-1 text-sm">{item.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed">{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <Link href="/hakkimizda" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5B8C51] text-white font-semibold rounded-full hover:bg-[#4a7342] transition-all shadow-md text-sm">
-                Daha Fazlasını Keşfet →
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] mb-6 animate-fade-up-2">
+              Uzun Ömürlü,<br />
+              <span className="text-[#EDDD5E]">Solmayan</span>{" "}
+              Güzellik
+            </h1>
+            <p className="text-base sm:text-xl text-white/70 mb-10 max-w-lg leading-relaxed animate-fade-up-3">
+              20 yılı aşkın tecrübemizle taze çiçekler, mekan süsleme ve organizasyon hizmetleri sunuyoruz.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up-3">
+              <Link href="/urunlerimiz" className="px-8 py-4 bg-[#5B8C51] text-white font-bold rounded-full text-sm text-center hover:bg-[#4a7342] transition shadow-xl hover:-translate-y-0.5">
+                🌸 Ürünleri Keşfet
               </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Us */}
-      <section className="py-16 sm:py-24 bg-[#f7faf6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div>
-              <span className="section-title">Neden Biz?</span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#404A3D] mt-4 mb-5">
-                Bizi Tercih Etmeniz İçin Birkaç Neden
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base">
-                20 yılı aşkın tecrübemiz, kaliteden ödün vermeyen hizmet anlayışımız ve her bütçeye uygun çözümlerimizle en özel anlarınızda yanınızdayız.
-              </p>
-              {[
-                "Sektörde 20 Yılı Aşkın Köklü Tecrübe",
-                "Her Zaman En Uygun ve Kaliteli Çiçekler",
-                "Profesyonel Tasarım ve Danışmanlık Desteği",
-                "Hızlı Teslimat ve Güvenilir Hizmet",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3 mb-3">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#5B8C51] flex items-center justify-center shrink-0">
-                    <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700 text-sm sm:text-base">{item}</span>
-                </div>
-              ))}
-              <Link href="/hizmetlerimiz" className="inline-flex items-center gap-2 mt-5 px-7 py-3.5 border-2 border-[#5B8C51] text-[#5B8C51] font-semibold rounded-full hover:bg-[#5B8C51] hover:text-white transition-all text-sm">
-                Hizmetlerimizi İnceleyin
+              <Link href="/iletisim" className="px-8 py-4 border border-white/30 text-white font-semibold rounded-full text-sm text-center hover:bg-white/10 transition backdrop-blur-sm">
+                Ücretsiz Teklif Al
               </Link>
             </div>
 
-            {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {[
-                { icon: "🏆", value: "20", label: "Yıllık Tecrübe", bg: "bg-[#5B8C51]", text: "text-white", sub: "text-[#EDDD5E]" },
-                { icon: "🎨", value: "75", label: "Dizayn İşletme", bg: "bg-[#EDDD5E]", text: "text-[#404A3D]", sub: "text-[#5B8C51]" },
-                { icon: "✨", value: "3000", label: "Ürün Çeşidi", bg: "bg-[#EDDD5E]", text: "text-[#404A3D]", sub: "text-[#5B8C51]" },
-                { icon: "😊", value: "7500", label: "Mutlu Müşteri", bg: "bg-[#5B8C51]", text: "text-white", sub: "text-[#EDDD5E]" },
-              ].map((stat) => (
-                <div key={stat.label} className={`${stat.bg} ${stat.text} rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center card-hover`}>
-                  <span className="text-3xl sm:text-4xl mb-2 sm:mb-3">{stat.icon}</span>
-                  <span className="text-3xl sm:text-4xl font-bold">{stat.value}+</span>
-                  <span className={`text-xs mt-1 ${stat.sub}`}>{stat.label}</span>
+            {/* Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 mt-14 pt-8 border-t border-white/10">
+              {stats.map(s => (
+                <div key={s.l}>
+                  <p className="text-2xl sm:text-3xl font-bold text-[#EDDD5E]">{s.n}</p>
+                  <p className="text-xs text-white/50 mt-1">{s.l}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        {/* scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 text-white/40">
+          <span className="text-[9px] tracking-[0.3em] uppercase">Keşfet</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent animate-pulse" />
+        </div>
       </section>
 
-      {/* Services */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14">
-            <span className="section-title">Hizmetlerimiz</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#404A3D] mt-4">Sunduğumuz Profesyonel Çözümler</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {services.map((s) => (
-              <div key={s.title} className="group rounded-2xl overflow-hidden shadow-sm card-hover bg-white border border-gray-100">
-                <div className="relative h-48 sm:h-52 overflow-hidden">
-                  <Image src={s.img} alt={s.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-[#404A3D] mb-2 text-sm sm:text-base">{s.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed mb-4">{s.desc}</p>
-                  <Link href="/hizmetlerimiz" className="inline-flex items-center text-xs sm:text-sm font-semibold text-[#5B8C51] hover:underline">
-                    Detaylar →
-                  </Link>
-                </div>
-              </div>
+      {/* ── ABOUT STRIP ── */}
+      <section className="bg-[#5B8C51] py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-12 text-white text-sm font-medium">
+            {["✓ Günlük Taze Çiçek", "✓ Ücretsiz Tasarım Danışmanlığı", "✓ Çorum'a Hızlı Teslimat", "✓ 20+ Yıllık Deneyim"].map(t => (
+              <span key={t} className="opacity-90">{t}</span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 sm:py-24 bg-[#404A3D]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14">
-            <span className="text-xs font-semibold tracking-[0.3em] text-[#EDDD5E] uppercase">Müşteri Yorumları</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4">Onlar Anlattı</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 card-hover">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => <span key={i} className="text-[#EDDD5E]">★</span>)}
+      {/* ── ABOUT ── */}
+      <section className="section-pad bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Images */}
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative h-56 sm:h-72 rounded-2xl overflow-hidden col-span-2">
+                  <Image src="/service-4.jpg" alt="Mekan süsleme" fill className="object-cover" />
                 </div>
-                <p className="text-gray-300 leading-relaxed mb-6 text-sm italic">&ldquo;{t.quote}&rdquo;</p>
+                <div className="relative h-36 sm:h-44 rounded-2xl overflow-hidden">
+                  <Image src="/service-1.jpg" alt="Buket" fill className="object-cover" />
+                </div>
+                <div className="relative h-36 sm:h-44 rounded-2xl overflow-hidden">
+                  <Image src="/service-2.jpg" alt="Çiçek" fill className="object-cover" />
+                </div>
+              </div>
+              <div className="absolute -bottom-5 -right-5 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-[#EDDD5E] flex flex-col items-center justify-center shadow-xl z-10">
+                <span className="text-3xl sm:text-4xl font-black text-[#1a1f18]">20+</span>
+                <span className="text-[9px] font-bold text-[#5B8C51] uppercase tracking-wider text-center">Yıllık<br/>Deneyim</span>
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className="pt-4 lg:pt-0">
+              <div className="badge mb-5">Hakkımızda</div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1a1f18] leading-tight mb-5">
+                Çorum&apos;da 20 Yılı Aşkın Tecrübe
+              </h2>
+              <p className="text-gray-500 leading-relaxed mb-6 text-sm sm:text-base">
+                1995&apos;ten bu yana Çorum&apos;un kalbinde hizmet veriyoruz. 3 katlı mağazamızda en taze çiçekleri, en şık organizasyon malzemelerini bulabilirsiniz.
+              </p>
+              <div className="space-y-3 mb-8">
+                {["Sektörde 20+ Yıllık Köklü Tecrübe","Her Gün Taze Çiçek Tedariki","Profesyonel Tasarım Danışmanlığı","Toptan & Perakende Satış"].map(item => (
+                  <div key={item} className="flex items-center gap-3 text-sm sm:text-base">
+                    <span className="w-5 h-5 rounded-full bg-[#5B8C51] flex items-center justify-center shrink-0">
+                      <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    <span className="text-gray-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/hakkimizda" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#5B8C51] text-white font-semibold rounded-full text-sm hover:bg-[#4a7342] transition shadow-md">
+                Daha Fazla Bilgi →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SERVICES ── */}
+      <section className="section-pad bg-[#faf9f7]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <div className="badge mb-4 mx-auto">Hizmetlerimiz</div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1a1f18]">Profesyonel Çözümler</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {services.map(s => (
+              <div key={s.title} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover-lift">
+                <div className="relative h-52 overflow-hidden">
+                  <Image src={s.img} alt={s.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <span className="absolute bottom-4 left-4 text-2xl">{s.icon}</span>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-[#1a1f18] mb-2 text-sm sm:text-base">{s.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-4">{s.desc}</p>
+                  <Link href="/hizmetlerimiz" className="text-xs font-bold text-[#5B8C51] hover:underline">Detaylar →</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/hizmetlerimiz" className="inline-flex px-8 py-3.5 border-2 border-[#5B8C51] text-[#5B8C51] font-semibold rounded-full text-sm hover:bg-[#5B8C51] hover:text-white transition">
+              Tüm Hizmetlerimiz
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ── */}
+      <section className="section-pad bg-[#1a1f18]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <div className="badge mb-4 mx-auto text-[#EDDD5E]" style={{color:"#EDDD5E", background:"rgba(237,221,94,0.08)", borderColor:"rgba(237,221,94,0.2)"}}>Müşteri Yorumları</div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white">Onlar Ne Dedi?</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {testimonials.map(t => (
+              <div key={t.name} className="bg-white/5 border border-white/8 rounded-2xl p-6 sm:p-8 hover-lift">
+                <div className="flex gap-0.5 mb-5">
+                  {[...Array(5)].map((_,i) => <span key={i} className="text-[#EDDD5E] text-sm">★</span>)}
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-6 italic">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden shrink-0">
-                    <Image src={t.img} alt={t.name} fill className="object-cover" />
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm shrink-0" style={{background: t.color}}>
+                    {t.initial}
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">{t.name}</p>
@@ -179,14 +194,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-[#5B8C51] to-[#4a7342]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Hayalinizdeki Organizasyon için Hazırız</h2>
-          <p className="text-green-100 mb-8 text-sm sm:text-base">Ücretsiz danışmanlık ve teklif almak için şimdi bize ulaşın.</p>
-          <Link href="/iletisim" className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-[#EDDD5E] text-[#404A3D] font-bold rounded-full hover:bg-yellow-400 transition-all shadow-xl text-base sm:text-lg">
-            Teklif Al →
-          </Link>
+      {/* ── CTA ── */}
+      <section className="relative py-20 overflow-hidden">
+        <Image src="/service-6.jpg" alt="Organizasyon" fill className="object-cover" />
+        <div className="absolute inset-0 bg-[#5B8C51]/85" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">Hayalinizdeki Organizasyon</h2>
+          <p className="text-green-100 mb-8 text-base sm:text-lg">Ücretsiz danışmanlık için hemen iletişime geçin.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/iletisim" className="px-10 py-4 bg-[#EDDD5E] text-[#1a1f18] font-bold rounded-full hover:bg-yellow-400 transition shadow-xl text-sm">
+              Teklif Al →
+            </Link>
+            <a href="tel:+905366463306" className="px-10 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition text-sm">
+              📞 Hemen Ara
+            </a>
+          </div>
         </div>
       </section>
     </>
