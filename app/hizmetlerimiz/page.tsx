@@ -29,7 +29,7 @@ const services = [
     features: ["Balon & Dekorasyon", "Şerit & Kurdele", "Hediye Paketleme", "Tematik Süslemeler"],
   },
   {
-    img: "/agac.png",
+    img: "/service-5.jpg",
     icon: "🌳",
     title: "Yapay Ağaç Tasarımı",
     desc: "Gerçeğe en yakın doku ve detaylarla hazırlanan yapay ağaçlarımız mekanlarınıza doğallığın estetik halini kazandırır. Bakımsız, uzun ömürlü çözümler.",

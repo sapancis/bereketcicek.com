@@ -6,7 +6,7 @@ const services = [
   { img: "/service-1.jpg", title: "Mekan Süsleme ve Organizasyon", desc: "Kafe, restaurant, apartman gibi mekanlarınızı çiçeklerimizle canlandırıyoruz." },
   { img: "/service-2.jpg", title: "Toptan ve Perakende Çiçekçilik", desc: "En kaliteli çiçekler, özel tasarım buketler ve aranjmanlarla sevdiklerinizi mutlu edin." },
   { img: "/service-3.jpg", title: "Organizasyon Malzemeleri", desc: "3 katlı mağazamızda organizasyonlarınız için A'dan Z'ye her türlü malzemeyi bulabilirsiniz." },
-  { img: "/agac.png", title: "Yapay Ağaç Tasarımı", desc: "Gerçeğe en yakın doku ve detaylarla hazırlanan yapay ağaçlarımız mekanınıza doğallık katar." },
+  { img: "/service-5.jpg", title: "Yapay Ağaç Tasarımı", desc: "Gerçeğe en yakın doku ve detaylarla hazırlanan yapay ağaçlarımız mekanınıza doğallık katar." },
 ];
 
 const testimonials = [
