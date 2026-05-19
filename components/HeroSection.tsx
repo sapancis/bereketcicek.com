@@ -1,67 +1,60 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const HeroBackground = dynamic(() => import("./HeroBackground"), { ssr: false });
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
 
-      {/* Video arka plan */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        poster="/carousel-1.jpg"
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-        {/* Video yoksa poster görseli gösterir */}
-      </video>
+      {/* Animasyonlu canvas arka plan */}
+      <HeroBackground />
 
-      {/* Koyu overlay — okunabilirlik için */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      {/* Sol taraf hafif beyaz geçiş — metin okunabilirliği */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/60 via-white/30 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none" />
 
       {/* İçerik */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <div className="max-w-2xl">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <div className="max-w-xl">
 
-          <span className="inline-block text-xs font-semibold tracking-[0.25em] text-[#EDDD5E] uppercase mb-5 border border-[#EDDD5E]/40 px-4 py-1.5 rounded-full backdrop-blur-sm">
+          <span className="inline-block text-xs font-semibold tracking-[0.25em] text-[#5B8C51] uppercase mb-5 bg-[#5B8C51]/10 border border-[#5B8C51]/20 px-4 py-1.5 rounded-full">
             Çorum&apos;un Çiçekçisi
           </span>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-5">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#404A3D] leading-[1.08] mb-5">
             Uzun Ömürlü,{" "}
-            <span className="relative text-[#EDDD5E]">
+            <span className="relative inline-block text-[#5B8C51]">
               Solmayan
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-[#EDDD5E]/60 rounded-full" />
+              <span className="absolute -bottom-1 left-0 w-full h-1.5 bg-[#EDDD5E] rounded-full" />
             </span>
             <br />
-            <span className="text-white/90">Güzellik</span>
+            <span className="text-[#404A3D]">Güzellik</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-white/80 mb-8 leading-relaxed max-w-lg">
-            20 yılı aşkın tecrübemizle taze çiçekler, mekan süsleme ve organizasyon hizmetleri sunuyoruz.
+          <p className="text-base sm:text-lg text-gray-600 mb-10 leading-relaxed">
+            20 yılı aşkın tecrübemizle taze çiçekler, mekan süsleme ve organizasyon hizmetleri sunuyoruz. Hayallerinizdeki anı birlikte yaşatalım.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12 sm:mb-16">
+          <div className="flex flex-col sm:flex-row gap-3 mb-14">
             <Link
               href="/urunlerimiz"
-              className="px-7 py-3.5 bg-[#5B8C51] text-white font-semibold rounded-full hover:bg-[#4a7342] transition-all shadow-lg text-sm text-center"
+              className="px-8 py-4 bg-[#5B8C51] text-white font-semibold rounded-full hover:bg-[#4a7342] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm text-center"
             >
-              Ürünleri Keşfet
+              🌸 Ürünleri Keşfet
             </Link>
             <Link
               href="/iletisim"
-              className="px-7 py-3.5 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/40 hover:bg-white/20 transition-all text-sm text-center"
+              className="px-8 py-4 bg-white/80 backdrop-blur-sm text-[#5B8C51] font-semibold rounded-full border-2 border-[#5B8C51] hover:bg-[#5B8C51] hover:text-white transition-all shadow-md text-sm text-center"
             >
               Teklif Al
             </Link>
           </div>
 
           {/* İstatistikler */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-y-5 gap-x-8 pt-6 border-t border-white/20">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-y-5 gap-x-8 pt-6 border-t border-[#5B8C51]/15">
             {[
               { value: "20+", label: "Yıllık Deneyim" },
               { value: "75+", label: "Dizayn İşletme" },
@@ -69,8 +62,8 @@ export default function HeroSection() {
               { value: "7500+", label: "Mutlu Müşteri" },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl font-bold text-[#EDDD5E]">{stat.value}</p>
-                <p className="text-xs text-white/60 mt-0.5">{stat.label}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#5B8C51]">{stat.value}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -78,10 +71,10 @@ export default function HeroSection() {
       </div>
 
       {/* Aşağı kaydır */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400">
         <span className="text-[10px] tracking-widest uppercase hidden sm:block">Aşağı Kaydır</span>
-        <div className="w-5 h-8 border border-white/30 rounded-full flex justify-center pt-1.5">
-          <div className="w-0.5 h-2 bg-white/60 rounded-full animate-bounce" />
+        <div className="w-5 h-8 border-2 border-gray-300 rounded-full flex justify-center pt-1.5">
+          <div className="w-1 h-2 bg-[#5B8C51] rounded-full animate-bounce" />
         </div>
       </div>
     </section>
